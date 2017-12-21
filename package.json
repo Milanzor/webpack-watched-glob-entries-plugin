@@ -1,0 +1,13 @@
+{
+  "name": "webpack-watched-glob-entries-plugin",
+  "version": "1.0.0",
+  "description": "Webpack plugin glob directories for entry files and also watch them for changes",
+  "main": "index.js",
+  "repository": "git@github.com:Milanzor/webpack-watched-glob-entries-plugin.git",
+  "author": "Milan van As <milanvanas@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.2",
+    "glob-base": "^0.3.0"
+  }
+}
