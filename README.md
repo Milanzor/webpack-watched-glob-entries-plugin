@@ -58,7 +58,7 @@ const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
     entry: WebpackWatchedGlobEntries.getEntries(
       [
         path.resolve(__dirname, 'entry/**/*.js')
-      ]
+      ],
       {
           // Optional glob options passed to glob.sync
       }
