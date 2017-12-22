@@ -1,7 +1,6 @@
 # Webpack watched glob entries plugin
 Webpack plugin to glob directories for entry files and also watch them for changes
 
-
 ## Why?
 I wanted to use Webpack for my projects but was missing a way to add new entries without touching the config.
 
