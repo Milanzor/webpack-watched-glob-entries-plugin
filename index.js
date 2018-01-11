@@ -9,50 +9,68 @@ const path = require('path');
 let directories = [];
 
 /**
- *
+ * class WebpackWatchedGlobEntries
  */
 class WebpackWatchedGlobEntries {
 
+    /**
+     *
+     * @param globs
+     * @param globOptions
+     * @returns {Function}
+     */
     static getEntries(globs, globOptions) {
 
-        // Check if globs are provided properly
-        if (typeof globs !== 'string' && !Array.isArray(globs)) {
-            throw new TypeError('globOptions must be a string or an array of strings');
+        return async function () {
+            return new Promise(resolve => {
+
+                // Check if globs are provided properly
+                if (typeof globs !== 'string' && !Array.isArray(globs)) {
+                    throw new TypeError('globOptions must be a string or an array of strings');
+                }
+
+                // Check globOptions if provided properly
+                if (globOptions && typeof globOptions !== 'object') {
+                    throw new TypeError('globOptions must be an object');
+                }
+
+
+                // Make entries an array
+                if (!Array.isArray(globs)) {
+                    globs = [globs];
+                }
+
+
+                //
+                let globbedFiles = {};
+
+                // Map through the globs
+                globs.forEach(function (globString) {
+
+                    let globBaseOptions = globBase(globString);
+
+                    directories.push(globBaseOptions.base);
+
+                    // Get the globbedFiles
+                    let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions);
+
+                    // Set the globbed files
+                    globbedFiles = Object.assign(files, globbedFiles);
+
+                });
+
+                resolve(globbedFiles);
+            });
         }
 
-        // Check globOptions if provided properly
-        if (globOptions && typeof globOptions !== 'object') {
-            throw new TypeError('globOptions must be an object');
-        }
-
-
-        // Make entries an array
-        if (!Array.isArray(globs)) {
-            globs = [globs];
-        }
-
-
-        //
-        let globbedFiles = {};
-
-        // Map through the globs
-        globs.forEach(function (globString) {
-
-            let globBaseOptions = globBase(globString);
-
-            directories.push(globBaseOptions.base);
-
-            // Get the globbedFiles
-            let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions);
-
-            // Set the globbed files
-            globbedFiles = Object.assign(files, globbedFiles);
-
-        });
-
-        return globbedFiles;
     }
 
+    /**
+     *
+     * @param globString
+     * @param globOptions
+     * @returns {{}}
+     */
     static getFiles(globString, globOptions) {
 
         let files = {};
@@ -72,18 +90,27 @@ class WebpackWatchedGlobEntries {
         return files;
     }
 
-    // Webpack's apply
+
+    /**
+     *
+     * @param compiler
+     */
     apply(compiler) {
 
         // After compiling, give webpack the globbed files
         compiler.plugin("after-compile", function (compilation, callback) {
+
+            // If we have directories, add them to the context
             if (directories.length) {
                 compilation.contextDependencies = compilation.contextDependencies.concat(directories);
             }
+
+            //
             callback();
         });
     }
 
 }
 
+// Export
 module.exports = WebpackWatchedGlobEntries;
