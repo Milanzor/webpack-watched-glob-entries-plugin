@@ -21,48 +21,43 @@ class WebpackWatchedGlobEntries {
      */
     static getEntries(globs, globOptions) {
 
-        return async function () {
-            return new Promise(resolve => {
+        return function () {
 
-                // Check if globs are provided properly
-                if (typeof globs !== 'string' && !Array.isArray(globs)) {
-                    throw new TypeError('globOptions must be a string or an array of strings');
-                }
+            // Check if globs are provided properly
+            if (typeof globs !== 'string' && !Array.isArray(globs)) {
+                throw new TypeError('globOptions must be a string or an array of strings');
+            }
 
-                // Check globOptions if provided properly
-                if (globOptions && typeof globOptions !== 'object') {
-                    throw new TypeError('globOptions must be an object');
-                }
+            // Check globOptions if provided properly
+            if (globOptions && typeof globOptions !== 'object') {
+                throw new TypeError('globOptions must be an object');
+            }
 
+            // Make entries an array
+            if (!Array.isArray(globs)) {
+                globs = [globs];
+            }
 
-                // Make entries an array
-                if (!Array.isArray(globs)) {
-                    globs = [globs];
-                }
+            //
+            let globbedFiles = {};
 
+            // Map through the globs
+            globs.forEach(function (globString) {
 
-                //
-                let globbedFiles = {};
+                let globBaseOptions = globBase(globString);
 
-                // Map through the globs
-                globs.forEach(function (globString) {
+                directories.push(globBaseOptions.base);
 
-                    let globBaseOptions = globBase(globString);
+                // Get the globbedFiles
+                let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions);
 
-                    directories.push(globBaseOptions.base);
+                // Set the globbed files
+                globbedFiles = Object.assign(files, globbedFiles);
 
-                    // Get the globbedFiles
-                    let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions);
-
-                    // Set the globbed files
-                    globbedFiles = Object.assign(files, globbedFiles);
-
-                });
-
-                resolve(globbedFiles);
             });
-        }
 
+            return globbedFiles;
+        }
     }
 
     /**
