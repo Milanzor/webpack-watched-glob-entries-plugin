@@ -85,27 +85,37 @@ class WebpackWatchedGlobEntries {
         return files;
     }
 
-
     /**
-     *
-     * @param compiler
+     * Install Plugin
+     * @param {Object} compiler
      */
     apply(compiler) {
-
-        // After compiling, give webpack the globbed files
-        compiler.plugin("after-compile", function (compilation, callback) {
-
-            // If we have directories, add them to the context
-            if (directories.length) {
-                compilation.contextDependencies = compilation.contextDependencies.concat(directories);
-            }
-
-            //
-            callback();
-        });
+        if (compiler.hooks) {
+            // Support Webpack >= 4
+            compiler.hooks.afterCompile.tapAsync(this.constructor.name, this.afterCompile.bind(this));
+        } else {
+            // Support Webpack < 4
+            compiler.plugin("after-compile", this.afterCompile);
+        }
     }
 
+    /**
+     * After compiling, give webpack the globbed files
+     * @param {Object} compilation 
+     * @param {Function} callback 
+     */
+    afterCompile(compilation, callback) {
+        if (Array.isArray(compilation.contextDependencies)) {
+            // Support Webpack < 4
+            compilation.contextDependencies = compilation.contextDependencies.concat(directories);
+        } else {
+            // Support Webpack >= 4
+            for (const directory of directories) {
+                compilation.contextDependencies.add(directory);
+            }
+        }
+        callback();
+    }
 }
 
-// Export
 module.exports = WebpackWatchedGlobEntries;
