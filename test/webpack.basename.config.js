@@ -14,7 +14,7 @@ module.exports = {
 
         // Plugin options
         {
-            basename_as_entry_id: true
+            basename_as_entry_name: true
         }
     ),
     mode: 'development',

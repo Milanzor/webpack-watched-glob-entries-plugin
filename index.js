@@ -60,7 +60,7 @@ class WebpackWatchedGlobEntries {
                 directories.push(globBaseOptions.base);
 
                 // Get the globbedFiles
-                let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions, pluginOptions.basename_as_entry_id);
+                let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions, pluginOptions.basename_as_entry_name);
 
                 // Set the globbed files
                 globbedFiles = Object.assign(files, globbedFiles);
@@ -75,9 +75,10 @@ class WebpackWatchedGlobEntries {
      *
      * @param globString
      * @param globOptions
+     * @param basename_as_entry_name
      * @returns {{}}
      */
-    static getFiles(globString, globOptions, basename_as_entry_id) {
+    static getFiles(globString, globOptions, basename_as_entry_name) {
 
         let files = {};
         let globBaseOptions = globBase(globString);
@@ -89,7 +90,7 @@ class WebpackWatchedGlobEntries {
 
             entryName = entryName.replace(path.extname(entryName), '');
 
-            if (basename_as_entry_id) {
+            if (basename_as_entry_name) {
                 entryName = path.basename(entryName);
             }
 
