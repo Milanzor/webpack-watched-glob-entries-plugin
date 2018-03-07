@@ -7,9 +7,15 @@
     "author": "Milan van As <milanvanas@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "test": "yarn cleanup && yarn webpack && mocha  ./test/tests/*.test.js && yarn cleanup",
+        "test": "yarn cleanup && yarn test:main && yarn cleanup && yarn test:basename && yarn cleanup",
+
+        "test:main": "yarn build:main && mocha  ./test/tests/output.test.js",
+        "build:main": "webpack --config test/webpack.config.js",
+
+        "test:basename": "yarn build:basename && mocha  ./test/tests/output.basename.test.js",
+        "build:basename": "webpack --config test/webpack.basename.config.js",
+
         "cleanup": "rimraf ./test/dist",
-        "webpack": "webpack --config test/webpack.config.js",
         "travis": "yarn test"
     },
     "private": false,

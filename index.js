@@ -22,7 +22,15 @@ class WebpackWatchedGlobEntries {
      */
     static getEntries(globs, globOptions, pluginOptions_) {
 
-        const pluginOptions = (typeof pluginOptions_ === 'object' ? pluginOptions_ : null) || {};
+        if (typeof pluginOptions_ !== 'undefined' && typeof pluginOptions_ !== 'object') {
+            throw new TypeError('pluginOptions_ must be an object');
+        }
+
+        // Options defaults
+        const pluginOptions = Object.assign({
+            basename_as_entry_id: false
+        }, pluginOptions_);
+
 
         return function () {
 
@@ -52,7 +60,7 @@ class WebpackWatchedGlobEntries {
                 directories.push(globBaseOptions.base);
 
                 // Get the globbedFiles
-                let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions);
+                let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions, pluginOptions.basename_as_entry_id);
 
                 // Set the globbed files
                 globbedFiles = Object.assign(files, globbedFiles);
@@ -69,7 +77,7 @@ class WebpackWatchedGlobEntries {
      * @param globOptions
      * @returns {{}}
      */
-    static getFiles(globString, globOptions) {
+    static getFiles(globString, globOptions, basename_as_entry_id) {
 
         let files = {};
         let globBaseOptions = globBase(globString);
@@ -80,6 +88,10 @@ class WebpackWatchedGlobEntries {
             let entryName = file.replace(globBaseOptions.base + '/', '');
 
             entryName = entryName.replace(path.extname(entryName), '');
+
+            if (basename_as_entry_id) {
+                entryName = path.basename(entryName);
+            }
 
             // Add the entry to the files obj
             files[entryName] = file;
