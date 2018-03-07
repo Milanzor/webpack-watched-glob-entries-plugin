@@ -6,7 +6,6 @@
   "repository": "https://github.com/Milanzor/webpack-watched-glob-entries-plugin",
   "author": "Milan van As <milanvanas@gmail.com>",
   "license": "MIT",
-  "main": "index.js",
   "private": false,
   "dependencies": {
     "glob": "^7.1.2",
