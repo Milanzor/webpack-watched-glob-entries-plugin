@@ -1,14 +1,27 @@
 {
-  "name": "webpack-watched-glob-entries-plugin",
-  "version": "2.0.0",
-  "description": "Webpack plugin to glob directories for entry files and also watch them for changes",
-  "main": "index.js",
-  "repository": "https://github.com/Milanzor/webpack-watched-glob-entries-plugin",
-  "author": "Milan van As <milanvanas@gmail.com>",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "glob": "^7.1.2",
-    "glob-base": "^0.3.0"
-  }
+    "name": "webpack-watched-glob-entries-plugin",
+    "version": "2.0.0",
+    "description": "Webpack plugin to glob directories for entry files and also watch them for changes",
+    "main": "index.js",
+    "repository": "https://github.com/Milanzor/webpack-watched-glob-entries-plugin",
+    "author": "Milan van As <milanvanas@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "test": "yarn cleanup && yarn webpack && mocha  ./test/tests/*.test.js && yarn cleanup",
+        "cleanup": "rimraf ./test/dist",
+        "webpack": "webpack --config test/webpack.config.js",
+        "travis": "yarn test"
+    },
+    "private": false,
+    "dependencies": {
+        "glob": "^7.1.2",
+        "glob-base": "^0.3.0"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "mocha": "^5.0.4",
+        "rimraf": "^2.6.2",
+        "webpack": "^4.1.1",
+        "webpack-cli": "^2.0.10"
+    }
 }
