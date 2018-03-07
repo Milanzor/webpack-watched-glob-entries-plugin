@@ -17,9 +17,12 @@ class WebpackWatchedGlobEntries {
      *
      * @param globs
      * @param globOptions
+     * @param pluginOptions_
      * @returns {Function}
      */
-    static getEntries(globs, globOptions) {
+    static getEntries(globs, globOptions, pluginOptions_) {
+
+        const pluginOptions = (typeof pluginOptions_ === 'object' ? pluginOptions_ : null) || {};
 
         return function () {
 
@@ -101,8 +104,8 @@ class WebpackWatchedGlobEntries {
 
     /**
      * After compiling, give webpack the globbed files
-     * @param {Object} compilation 
-     * @param {Function} callback 
+     * @param {Object} compilation
+     * @param {Function} callback
      */
     afterCompile(compilation, callback) {
         if (Array.isArray(compilation.contextDependencies)) {
