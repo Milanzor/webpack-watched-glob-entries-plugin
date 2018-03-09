@@ -31,7 +31,6 @@ class WebpackWatchedGlobEntries {
             basename_as_entry_id: false
         }, pluginOptions_);
 
-
         return function () {
 
             // Check if globs are provided properly
@@ -57,7 +56,10 @@ class WebpackWatchedGlobEntries {
 
                 let globBaseOptions = globBase(globString);
 
-                directories.push(globBaseOptions.base);
+                // Dont add if its already in the directories
+                if (directories.indexOf(globBaseOptions.base) === -1) {
+                    directories.push(globBaseOptions.base);
+                }
 
                 // Get the globbedFiles
                 let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions, pluginOptions.basename_as_entry_name);
@@ -68,7 +70,7 @@ class WebpackWatchedGlobEntries {
             });
 
             return globbedFiles;
-        }
+        };
     }
 
     /**
