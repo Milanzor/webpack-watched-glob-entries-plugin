@@ -11,12 +11,15 @@ Provides a way to glob for entry files in Webpack `watch` and `non-watch` modes.
 
 Install through NPM or Yarn =>
 
-`yarn install webpack-watched-glob-entries-plugin -D`
+```sh
+yarn install webpack-watched-glob-entries-plugin -D
+```
 
 or
 
-`npm install --save-dev webpack-watched-glob-entries-plugin` 
-
+```sh
+npm install --save-dev webpack-watched-glob-entries-plugin
+```
 
 #### Usage
 
@@ -44,7 +47,7 @@ const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
     ... // At the plugin definition in your config
     
     plugins: [
-        new WebpackWatchedGlobEntries,
+        new WebpackWatchedGlobEntries(),
     ],
     
     ...
