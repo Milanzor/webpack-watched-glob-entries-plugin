@@ -74,23 +74,23 @@ class WebpackWatchedGlobEntries {
     }
 
     /**
-     *
+     * Create webpack file entry object
      * @param globString
      * @param globOptions
      * @param basename_as_entry_name
-     * @returns {{}}
+     * @returns {Object}
      */
     static getFiles(globString, globOptions, basename_as_entry_name) {
-
-        let files = {};
-        let globBaseOptions = globBase(globString);
+        const files = {};
+        const globBaseOptions = globBase(globString);
 
         glob.sync(globString, globOptions).forEach(function (file) {
-
             // Format the entryName
-            let entryName = file.replace(globBaseOptions.base + '/', '');
-
-            entryName = entryName.replace(path.extname(entryName), '');
+            let entryName = path
+                .relative(globBaseOptions.base, file)
+                .replace(path.extname(file), '')
+                .split(path.sep)
+                .join('/')
 
             if (basename_as_entry_name) {
                 entryName = path.basename(entryName);
