@@ -1,7 +1,4 @@
-// Reqs:
-// glob
-// glob-base
-
+// Fetch depencies
 const glob = require('glob');
 const globBase = require('glob-base');
 const path = require('path');
@@ -22,6 +19,7 @@ class WebpackWatchedGlobEntries {
      */
     static getEntries(globs, globOptions, pluginOptions_) {
 
+        // Type check pluginOptions_
         if (typeof pluginOptions_ !== 'undefined' && typeof pluginOptions_ !== 'object') {
             throw new TypeError('pluginOptions_ must be an object');
         }
@@ -137,3 +135,4 @@ class WebpackWatchedGlobEntries {
 }
 
 module.exports = WebpackWatchedGlobEntries;
+

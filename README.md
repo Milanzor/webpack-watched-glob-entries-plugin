@@ -4,15 +4,15 @@
 [![downloads-week][downloads-week]][downloads-week-url]
 
 
-### Webpack-watched-glob-entries-plugin
+# Webpack-watched-glob-entries-plugin
 Provides a way to glob for entry files in Webpack `watch` and `non-watch` modes.
 
-#### Install
+## Install
 
-Install through NPM or Yarn =>
+Install through `yarn` or `npm` =>
 
 ```sh
-yarn add webpack-watched-glob-entries-plugin -D
+yarn add -D webpack-watched-glob-entries-plugin
 ```
 
 or
@@ -21,14 +21,14 @@ or
 npm install --save-dev webpack-watched-glob-entries-plugin
 ```
 
-#### Usage
+## Usage
 
 ```js
 
 // Get the plugin
 const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin');
  
-// In your config definition:
+// In your Webpack config:
 {
     ... // At your entry definition
     
@@ -44,7 +44,7 @@ const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
       }
     )
     
-    ... // At the plugin definition in your config
+    ... // At the plugin definition
     
     plugins: [
         new WebpackWatchedGlobEntries(),
@@ -55,10 +55,10 @@ const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
 
 ```
 
-#### Why?
+## Why?
 I wanted to use Webpack for my projects but was missing a way to add new entries without touching the config.
 
-#### Example
+## Example
 If you have the following source structure:
 
 ```

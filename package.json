@@ -8,15 +8,12 @@
     "license": "MIT",
     "scripts": {
         "test": "yarn cleanup && yarn test:main && yarn cleanup && yarn test:basename && yarn cleanup",
-
         "test:main": "yarn build:main && mocha  ./test/tests/output.test.js",
         "build:main": "webpack --config test/webpack.config.js",
         "watch:main": "yarn build:main --watch",
-
         "test:basename": "yarn build:basename && mocha  ./test/tests/output.basename.test.js",
         "build:basename": "webpack --config test/webpack.basename.config.js",
         "watch:basename": "yarn build:basename --watch",
-
         "cleanup": "rimraf ./test/dist",
         "travis": "yarn test"
     },
