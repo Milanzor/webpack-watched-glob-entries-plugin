@@ -12,7 +12,7 @@ Provides a way to glob for entry files in Webpack `watch` and `non-watch` modes.
 Install through NPM or Yarn =>
 
 ```sh
-yarn install webpack-watched-glob-entries-plugin -D
+yarn add webpack-watched-glob-entries-plugin -D
 ```
 
 or
