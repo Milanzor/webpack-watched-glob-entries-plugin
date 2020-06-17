@@ -1,32 +1,32 @@
 {
     "name": "webpack-watched-glob-entries-plugin",
-    "version": "2.1.5",
+    "version": "2.1.6",
     "description": "Webpack plugin to glob directories for entry files and also watch them for changes",
     "main": "index.js",
     "repository": "https://github.com/Milanzor/webpack-watched-glob-entries-plugin",
     "author": "Milan van As <milanvanas@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "test": "yarn cleanup && yarn test:main && yarn cleanup && yarn test:basename && yarn cleanup",
-        "test:main": "yarn build:main && mocha  ./test/tests/output.test.js",
+        "test": "npm run cleanup && npm run test:main && npm run cleanup && npm run test:basename && npm run cleanup",
+        "test:main": "npm run build:main && mocha  ./test/tests/output.test.js",
         "build:main": "webpack --config test/webpack.config.js",
-        "watch:main": "yarn build:main --watch",
-        "test:basename": "yarn build:basename && mocha  ./test/tests/output.basename.test.js",
+        "watch:main": "npm run build:main --watch",
+        "test:basename": "npm run build:basename && mocha  ./test/tests/output.basename.test.js",
         "build:basename": "webpack --config test/webpack.basename.config.js",
-        "watch:basename": "yarn build:basename --watch",
+        "watch:basename": "npm run build:basename --watch",
         "cleanup": "rimraf ./test/dist",
-        "travis": "yarn test"
+        "travis": "npm run test"
     },
     "private": false,
     "dependencies": {
-        "glob": "^7.1.3",
+        "glob": "^7.1.6",
         "glob-base": "^0.3.0"
     },
     "devDependencies": {
         "chai": "^4.2.0",
-        "mocha": "^6.1.4",
-        "rimraf": "^2.6.3",
-        "webpack": "^4.30.0",
-        "webpack-cli": "^3.3.1"
+        "mocha": "^6.2.3",
+        "rimraf": "^2.7.1",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11"
     }
 }
