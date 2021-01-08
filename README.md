@@ -83,8 +83,8 @@ Now add `[name]` in your `output.filename` and the entry file directory structur
 
 
 
-[travis-build]: https://api.travis-ci.org/Milanzor/webpack-watched-glob-entries-plugin.svg?branch=master
-[travis-build-url]: https://travis-ci.org/Milanzor/webpack-watched-glob-entries-plugin
+[travis-build]: https://api.travis-ci.com/Milanzor/webpack-watched-glob-entries-plugin.svg?branch=master
+[travis-build-url]: https://travis-ci.com/Milanzor/webpack-watched-glob-entries-plugin
 
 [david-dm-status]: https://david-dm.org/milanzor/webpack-watched-glob-entries-plugin.svg
 [david-dm-status-url]: https://david-dm.org/milanzor/webpack-watched-glob-entries-plugin
