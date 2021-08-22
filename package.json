@@ -14,8 +14,7 @@
         "test:basename": "npm run build:basename && mocha  ./test/tests/output.basename.test.js",
         "build:basename": "webpack --config test/webpack.basename.config.js",
         "watch:basename": "npm run build:basename --watch",
-        "cleanup": "rimraf ./test/dist",
-        "travis": "npm run test"
+        "cleanup": "rimraf ./test/dist"
     },
     "private": false,
     "dependencies": {
