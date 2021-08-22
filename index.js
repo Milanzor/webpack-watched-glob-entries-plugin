@@ -1,6 +1,6 @@
 // Fetch depencies
 const glob = require('glob');
-const globBase = require('glob-base');
+const globParent = require('glob-parent');
 const path = require('path');
 
 let directories = [];
@@ -29,7 +29,7 @@ class WebpackWatchedGlobEntries {
             basename_as_entry_id: false
         }, pluginOptions_);
 
-        return function () {
+        return function() {
 
             // Check if globs are provided properly
             if (typeof globs !== 'string' && !Array.isArray(globs)) {
@@ -50,13 +50,13 @@ class WebpackWatchedGlobEntries {
             let globbedFiles = {};
 
             // Map through the globs
-            globs.forEach(function (globString) {
+            globs.forEach(function(globString) {
 
-                let globBaseOptions = globBase(globString);
+                let base = globParent(globString, {});
 
                 // Dont add if its already in the directories
-                if (directories.indexOf(globBaseOptions.base) === -1) {
-                    directories.push(globBaseOptions.base);
+                if (directories.indexOf(base) === -1) {
+                    directories.push(base);
                 }
 
                 // Get the globbedFiles
@@ -79,16 +79,18 @@ class WebpackWatchedGlobEntries {
      * @returns {Object}
      */
     static getFiles(globString, globOptions, basename_as_entry_name) {
-        const files = {};
-        const globBaseOptions = globBase(globString);
 
-        glob.sync(globString, globOptions).forEach(function (file) {
+        const files = {};
+
+        let base = globParent(globString, {});
+
+        glob.sync(globString, globOptions).forEach(function(file) {
             // Format the entryName
             let entryName = path
-                .relative(globBaseOptions.base, file)
-                .replace(path.extname(file), '')
-                .split(path.sep)
-                .join('/')
+            .relative(base, file)
+            .replace(path.extname(file), '')
+            .split(path.sep)
+            .join('/');
 
             if (basename_as_entry_name) {
                 entryName = path.basename(entryName);
@@ -111,7 +113,7 @@ class WebpackWatchedGlobEntries {
             compiler.hooks.afterCompile.tapAsync(this.constructor.name, this.afterCompile.bind(this));
         } else {
             // Support Webpack < 4
-            compiler.plugin("after-compile", this.afterCompile);
+            compiler.plugin('after-compile', this.afterCompile);
         }
     }
 
