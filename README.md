@@ -1,4 +1,3 @@
-[![travis-build][travis-build]][travis-build-url]
 [![david-dm-status][david-dm-status]][david-dm-status-url]
 [![license][license]][license-url]
 [![downloads-week][downloads-week]][downloads-week-url]
@@ -80,11 +79,6 @@ The entries will look like:
 ```
 
 Now add `[name]` in your `output.filename` and the entry file directory structure will be reflected in the output directory.
-
-
-
-[travis-build]: https://api.travis-ci.com/Milanzor/webpack-watched-glob-entries-plugin.svg?branch=master
-[travis-build-url]: https://travis-ci.com/Milanzor/webpack-watched-glob-entries-plugin
 
 [david-dm-status]: https://david-dm.org/milanzor/webpack-watched-glob-entries-plugin.svg
 [david-dm-status-url]: https://david-dm.org/milanzor/webpack-watched-glob-entries-plugin
