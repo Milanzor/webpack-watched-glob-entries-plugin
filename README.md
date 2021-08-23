@@ -1,4 +1,4 @@
-[![david-dm-status][david-dm-status]][david-dm-status-url]
+[![Node.js CI](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/node.js.yml/badge.svg)](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/node.js.yml)
 [![license][license]][license-url]
 [![downloads-week][downloads-week]][downloads-week-url]
 
@@ -79,9 +79,6 @@ The entries will look like:
 ```
 
 Now add `[name]` in your `output.filename` and the entry file directory structure will be reflected in the output directory.
-
-[david-dm-status]: https://david-dm.org/milanzor/webpack-watched-glob-entries-plugin.svg
-[david-dm-status-url]: https://david-dm.org/milanzor/webpack-watched-glob-entries-plugin
 
 [license]: https://img.shields.io/github/license/Milanzor/webpack-watched-glob-entries-plugin.svg
 [license-url]: https://github.com/Milanzor/webpack-watched-glob-entries-plugin/blob/master/LICENSE
