@@ -1,4 +1,5 @@
 [![Node.js CI](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/node.js.yml/badge.svg)](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/node.js.yml)
+[![CodeQL](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/codeql-analysis.yml)
 [![license][license]][license-url]
 [![downloads-week][downloads-week]][downloads-week-url]
 
