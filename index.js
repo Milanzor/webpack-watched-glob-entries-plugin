@@ -129,7 +129,7 @@ class WebpackWatchedGlobEntries {
         } else {
             // Support Webpack >= 4
             for (const directory of directories) {
-                compilation.contextDependencies.add(directory);
+                compilation.contextDependencies.add(path.normalize(directory));
             }
         }
         callback();
