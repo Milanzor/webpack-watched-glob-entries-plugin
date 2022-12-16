@@ -1,6 +1,6 @@
 {
     "name": "webpack-watched-glob-entries-plugin",
-    "version": "2.2.5",
+    "version": "2.2.6",
     "description": "Webpack plugin to glob directories for entry files and also watch them for changes",
     "main": "index.js",
     "repository": "https://github.com/Milanzor/webpack-watched-glob-entries-plugin",
@@ -22,7 +22,7 @@
         "glob-parent": ">=6.0.1"
     },
     "engines": {
-        "node": ">=12.0.0 <18"
+        "node": ">=12.0.0 <=18"
     },
     "devDependencies": {
         "chai": "^4.2.0",
