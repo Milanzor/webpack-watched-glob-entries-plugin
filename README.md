@@ -82,7 +82,7 @@ The entries will look like:
 Now add `[name]` in your `output.filename` and the entry file directory structure will be reflected in the output directory.
 
 [license]: https://img.shields.io/github/license/Milanzor/webpack-watched-glob-entries-plugin.svg
-[license-url]: https://github.com/Milanzor/webpack-watched-glob-entries-plugin/blob/master/LICENSE
+[license-url]: https://github.com/Milanzor/webpack-watched-glob-entries-plugin/blob/main/LICENSE
 
 [downloads-week]: https://img.shields.io/npm/dw/webpack-watched-glob-entries-plugin.svg
 [downloads-week-url]: https://www.npmjs.com/package/webpack-watched-glob-entries-plugin
