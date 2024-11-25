@@ -3,7 +3,10 @@
     "version": "3.0.2",
     "description": "Webpack plugin to glob directories for entry files and also watch them for changes",
     "main": "index.js",
-    "repository": "https://github.com/Milanzor/webpack-watched-glob-entries-plugin",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Milanzor/webpack-watched-glob-entries-plugin.git"
+    },
     "author": "Milan van As <milanvanas@gmail.com>",
     "license": "MIT",
     "scripts": {
