@@ -23,5 +23,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci --no-optional
+    - run: npm ci --omit=optional
     - run: npm test
