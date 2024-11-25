@@ -22,7 +22,7 @@
         "glob-parent": ">=6.0.2"
     },
     "engines": {
-        "node": ">=14.0.0 <=21"
+        "node": ">=14.0.0 <=22"
     },
     "devDependencies": {
         "chai": "^4.3.10",
