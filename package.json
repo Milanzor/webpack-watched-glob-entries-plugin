@@ -17,6 +17,9 @@
         "test:basename": "npm run build:basename && mocha  ./test/tests/output.basename.test.js",
         "build:basename": "webpack --config test/webpack.basename.config.js",
         "watch:basename": "npm run build:basename --watch",
+        "test:multiplefiletypes": "npm run build:multiplefiletypes && mocha  ./test/tests/output.multiplefiletypes.test.js",
+        "build:multiplefiletypes": "webpack --config test/webpack.multiplefiletypes.config.js",
+        "watch:multiplefiletypes": "npm run build:multiplefiletypes --watch",
         "cleanup": "rimraf ./test/dist"
     },
     "private": false,
@@ -29,8 +32,13 @@
     },
     "devDependencies": {
         "chai": "^4.3.10",
+        "css-loader": "^7.1.2",
+        "mini-css-extract-plugin": "^2.9.4",
         "mocha": "^10.2.0",
         "rimraf": "^5.0.5",
+        "sass": "^1.94.2",
+        "sass-loader": "^16.0.6",
+        "style-loader": "^4.0.0",
         "webpack": "^5.89.0",
         "webpack-cli": "^5.1.4"
     },
