@@ -10,7 +10,7 @@
     "author": "Milan van As <milanvanas@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "test": "npm run cleanup && npm run test:main && npm run cleanup && npm run test:basename && npm run cleanup",
+        "test": "npm run cleanup && npm run test:main && npm run cleanup && npm run test:basename && npm run cleanup && npm run test:multiplefiletypes && npm run cleanup",
         "test:main": "npm run build:main && mocha  ./test/tests/output.test.js",
         "build:main": "webpack --config test/webpack.config.js",
         "watch:main": "npm run build:main --watch",
