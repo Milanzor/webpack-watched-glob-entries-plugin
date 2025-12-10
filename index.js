@@ -63,8 +63,17 @@ class WebpackWatchedGlobEntries {
                 let files = WebpackWatchedGlobEntries.getFiles(globString, globOptions, pluginOptions.basename_as_entry_name);
 
                 // Set the globbed files
-                globbedFiles = Object.assign(files, globbedFiles);
+                for (const entryName in files) {
+                    if (!globbedFiles[entryName]) {
+                        globbedFiles[entryName] = [];
+                    }
 
+                    for (const file of files[entryName]) {
+                        if (!globbedFiles[entryName].includes(file)) {
+                            globbedFiles[entryName].push(file);
+                        }
+                    }
+                }
             });
 
             return globbedFiles;
@@ -96,8 +105,14 @@ class WebpackWatchedGlobEntries {
                 entryName = path.basename(entryName);
             }
 
-            // Add the entry to the files obj
-            files[entryName] = file;
+            if (!files[entryName]) {
+                files[entryName] = [];
+            }
+
+            if (!files[entryName].includes(file)) {
+                // Add the entry to the files obj
+                files[entryName].push(file);
+            }
         });
 
         return files;
