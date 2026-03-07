@@ -1,10 +1,9 @@
 [![Node.js CI](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/node.js.yml/badge.svg)](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/node.js.yml)
-[![CodeQL](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Milanzor/webpack-watched-glob-entries-plugin/actions/workflows/codeql-analysis.yml)
 [![license][license]][license-url]
 [![downloads-week][downloads-week]][downloads-week-url]
 
-
 # Webpack-watched-glob-entries-plugin
+
 Provides a way to glob for entry files in Webpack `watch` and `non-watch` modes.
 
 ## Install
@@ -56,9 +55,11 @@ const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
 ```
 
 ## Why?
+
 I wanted to use Webpack for my projects but was missing a way to add new entries without touching the config.
 
 ## Example
+
 If you have the following source structure:
 
 ```
@@ -71,6 +72,7 @@ If you have the following source structure:
 ```
 
 The entries will look like:
+
 ```
 {
     "main":         "/abs/path/to/main.js",
